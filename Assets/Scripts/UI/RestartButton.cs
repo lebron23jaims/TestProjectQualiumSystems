@@ -19,7 +19,6 @@ namespace GameUI
         private void OnRestartButtonClick()
         {
             GameEvent.GameEventsStorage.OnRestartSceneHandler();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

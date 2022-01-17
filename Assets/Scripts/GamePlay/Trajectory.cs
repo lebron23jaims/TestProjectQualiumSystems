@@ -8,8 +8,8 @@ public interface ITrajectory
 
 public class Trajectory : MonoBehaviour, ITrajectory
 {
-    [SerializeField] protected float _lengthCoeficient;
-    protected LineRenderer _lineRenderer;
+    [SerializeField] private float _lengthCoeficient;
+    private LineRenderer _lineRenderer;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class Trajectory : MonoBehaviour, ITrajectory
         _lineRenderer.endWidth = 0.05f;
     }
 
-    public virtual void ShowTrajectory(Vector3 originPoint, Vector3 speed)
+    public void ShowTrajectory(Vector3 originPoint, Vector3 speed)
     {
         Vector3[] linePoints = new Vector3[10];
         _lineRenderer.positionCount = linePoints.Length;
@@ -31,6 +31,7 @@ public class Trajectory : MonoBehaviour, ITrajectory
 
         _lineRenderer.SetPositions(linePoints);
     }
+
     public void Activate(bool isOn)
     {
         gameObject.SetActive(isOn);

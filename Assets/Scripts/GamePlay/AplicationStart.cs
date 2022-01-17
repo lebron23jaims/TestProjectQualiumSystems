@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AplicationStart : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class AplicationStart : MonoBehaviour
         Helper.SudscriberTool.Reset();
         Helper.TransformStorage.Reset();
         GameEvent.GameEventsStorage.OnRestartScene -= OnUnsubscribeAll;
+        GameEvent.GameEventsStorage.OnRestartScene -= RestartScene;
+    }
+
+    private void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Prepare()
@@ -25,6 +32,7 @@ public class AplicationStart : MonoBehaviour
         CreateUIElements();
         CreateGamePlayElements();
         GameEvent.GameEventsStorage.OnRestartScene += OnUnsubscribeAll;
+        GameEvent.GameEventsStorage.OnRestartScene += RestartScene;
     }
 
     private void CreateGamePlayElements()
