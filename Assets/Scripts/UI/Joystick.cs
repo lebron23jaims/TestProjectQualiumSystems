@@ -52,7 +52,6 @@ namespace GameUI
             SetState(JoystickState.Calm);
 
             transform.SetSiblingIndex(0);
-
         }
 
         public Vector3 GetDirection()

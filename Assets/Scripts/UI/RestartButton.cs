@@ -9,6 +9,7 @@ namespace GameUI
     public class RestartButton : MonoBehaviour
     {
         private Button _restartButton;
+
         private void Awake()
         {
             _restartButton = transform.GetComponent<Button>();
@@ -17,9 +18,7 @@ namespace GameUI
 
         private void OnRestartButtonClick()
         {
-            Helper.SudscriberTool.UnsubscribeAll();
-            Helper.SudscriberTool.Reset();
-            Helper.TransformStorage.Reset();
+            GameEvent.GameEventsStorage.OnRestartSceneHandler();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

@@ -2,7 +2,6 @@
 
 public class AplicationStart : MonoBehaviour
 {
-
     private void Start()
     {
         Prepare();
@@ -10,16 +9,22 @@ public class AplicationStart : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        OnUnsubscribeAll();
+    }
+
+    private void OnUnsubscribeAll()
+    {
         Helper.SudscriberTool.UnsubscribeAll();
         Helper.SudscriberTool.Reset();
         Helper.TransformStorage.Reset();
+        GameEvent.GameEventsStorage.OnRestartScene -= OnUnsubscribeAll;
     }
-
 
     private void Prepare()
     {
         CreateUIElements();
         CreateGamePlayElements();
+        GameEvent.GameEventsStorage.OnRestartScene += OnUnsubscribeAll;
     }
 
     private void CreateGamePlayElements()

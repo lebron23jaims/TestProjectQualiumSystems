@@ -8,6 +8,7 @@ public interface IMainBall
 public class MainBall : Ball, IMainBall
 {
     private Rigidbody2D _rb;
+
     private void Awake()
     {
         Helper.TransformStorage.RegisterTransform(Helper.GameСonstants.Ball, transform);

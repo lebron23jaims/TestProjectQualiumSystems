@@ -20,8 +20,6 @@ public class Trajectory : MonoBehaviour, ITrajectory
 
     public virtual void ShowTrajectory(Vector3 originPoint, Vector3 speed)
     {
-        //Vector3 endPoint = speed + originPoint;
-
         Vector3[] linePoints = new Vector3[10];
         _lineRenderer.positionCount = linePoints.Length;
 
@@ -37,5 +35,4 @@ public class Trajectory : MonoBehaviour, ITrajectory
     {
         gameObject.SetActive(isOn);
     }
-
 }
